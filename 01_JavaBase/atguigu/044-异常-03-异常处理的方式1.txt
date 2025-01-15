@@ -1,0 +1,46 @@
+1. **什么是异常？**
+
+异常是程序执行过程中出现的非正常情况，如果不处理将导致JVM的非正常停止。
+
+2. **异常的抛出机制**
+
+Java使用不同类表示不同异常，一旦发生异常，会创建对应异常类型的对象并抛出。程序员可以捕获这个异常对象并处理，否则会导致程序终止。
+
+3. **如何对待异常**
+
+处理异常有两种方法：一是终止程序运行，二是在编写程序时预防并处理异常，保证代码健壮性。
+
+4. **异常的体系结构**
+
+- `java.lang.Throwable`: 异常体系根父类
+  - `java.lang.Error`: JVM无法解决的严重问题，一般不处理
+    - `StackOverflowError`, `OutOfMemoryError`
+  - `java.lang.Exception`: 可以处理的异常
+    - 编译时异常: `ClassNotFoundException`, `FileNotFoundException`, `IOException`
+    - 运行时异常: `ArrayIndexOutOfBoundsException`, `NullPointerException`, `ClassCastException`, `NumberFormatException`, `InputMismatchException`, `ArithmeticException`
+
+5. **try-catch-finally**
+
+- 通过try-catch-finally实现抓抛模型，处理异常
+- try中放可能异常代码，catch捕获处理异常，finally中放无条件执行代码
+- 可嵌套使用，处理编译时异常，运行时异常推荐根据异常信息修改代码
+
+6. **finally的使用**
+
+- finally中声明一定要执行的代码，不管异常是否处理
+- 用于关闭资源等必须执行的操作
+- final、finally、finalize的区别
+
+7. **throws**
+
+- 在方法声明处使用"throws 异常类型1,异常类型2,..."
+- 仅抛出异常给方法调用者处理，不算是真正处理异常
+- 重写方法需注意异常类型匹配
+
+8. **异常处理方式选择**
+
+- 资源调用时使用try-catch-finally避免内存泄漏
+- 方法调用链中异常处理选择使用throws或try-catch-finally
+- 方法重写需考虑异常匹配
+
+以上是关于异常处理的基本内容。
